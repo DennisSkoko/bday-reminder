@@ -22,6 +22,6 @@ module.exports = () => ({
       type: 'number'
     }),
   handler: ({ name, month, day }) => {
-    validate(month, day)  
+    validate(month, day)
   }
 })
