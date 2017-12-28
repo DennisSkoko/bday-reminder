@@ -5,6 +5,7 @@ const yargs = require('yargs')
 
 const modules = [
   { name: 'settings', path: '../conf/app' },
+  { path: 'context/logger' },
   { path: 'context/storage' },
   {
     path: 'commands',
