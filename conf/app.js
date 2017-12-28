@@ -11,6 +11,11 @@ require('dotenv').config({
 module.exports = () => ({
   version: '1.0.0',
 
+  storage: {
+    path: path.join(root, 'res', 'storage.json'),
+    encoding: 'utf8'
+  },
+
   logger: {
     level: process.env.LOG_LEVEL || 'info',
     timestamp: true,

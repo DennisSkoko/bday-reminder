@@ -5,6 +5,7 @@ const yargs = require('yargs')
 
 const modules = [
   { name: 'settings', path: '../conf/app' },
+  { path: 'context/storage' },
   {
     path: 'commands',
     modules: [
@@ -17,9 +18,15 @@ const modules = [
 module.exports = () => {
   const ctx = loader(modules)
 
-  yargs
-    .version(ctx.settings.version)
-    .command(ctx.commands.add)
-    .command(ctx.commands.run)
-    .parse()
+  ctx.storage()
+    .then(() => {
+      yargs
+        .version(ctx.settings.version)
+        .command(ctx.commands.add)
+        .command(ctx.commands.run)
+        .parse()
+    })
+    .catch(err => {
+      console.log(err)
+    })
 }

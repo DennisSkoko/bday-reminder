@@ -5,6 +5,7 @@
   },
   "dependencies": {
     "dotenv": "^4.0.0",
+    "fs-extra": "^5.0.0",
     "get-caller-file": "^1.0.2",
     "yargs": "^10.0.3"
   },
