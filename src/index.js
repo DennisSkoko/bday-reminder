@@ -25,6 +25,7 @@ module.exports = () => {
         .version(ctx.settings.version)
         .command(ctx.commands.add)
         .command(ctx.commands.run)
+        .demandCommand()
         .parse()
     })
     .catch(console.error)
