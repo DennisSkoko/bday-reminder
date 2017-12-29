@@ -20,5 +20,10 @@ module.exports = () => ({
     level: process.env.LOG_LEVEL || 'info',
     timestamp: true,
     colors: true
+  },
+
+  reminder: {
+    cronTime: '* * * * * *', // '0 0 9 * * *',
+    start: true
   }
 })

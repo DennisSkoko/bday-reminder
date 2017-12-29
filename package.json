@@ -4,6 +4,7 @@
     "test": "eslint . bin/bday-reminder"
   },
   "dependencies": {
+    "cron": "^1.3.0",
     "dotenv": "^4.0.0",
     "fs-extra": "^5.0.0",
     "get-caller-file": "^1.0.2",

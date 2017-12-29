@@ -6,6 +6,7 @@ const modules = [
   { name: 'settings', path: '../conf/app' },
   { path: 'context/logger' },
   { path: 'context/storage' },
+  { path: 'context/reminder' },
   {
     path: 'commands',
     modules: [
