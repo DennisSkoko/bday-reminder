@@ -1,7 +1,6 @@
 'use strict'
 
 const loader = require('./util/context-loader')
-const yargs = require('yargs')
 
 const modules = [
   { name: 'settings', path: '../conf/app' },
@@ -13,20 +12,8 @@ const modules = [
       { path: 'add' },
       { path: 'run' }
     ]
-  }
+  },
+  { path: 'context/app' }
 ]
 
-module.exports = () => {
-  const ctx = loader(modules)
-
-  ctx.storage.init()
-    .then(() => {
-      yargs
-        .version(ctx.settings.version)
-        .command(ctx.commands.add)
-        .command(ctx.commands.run)
-        .demandCommand()
-        .parse()
-    })
-    .catch(console.error)
-}
+module.exports = () => loader(modules).app()
