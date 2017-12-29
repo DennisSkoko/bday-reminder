@@ -19,7 +19,7 @@ const modules = [
 module.exports = () => {
   const ctx = loader(modules)
 
-  ctx.storage()
+  ctx.storage.init()
     .then(() => {
       yargs
         .version(ctx.settings.version)
@@ -27,7 +27,5 @@ module.exports = () => {
         .command(ctx.commands.run)
         .parse()
     })
-    .catch(err => {
-      console.log(err)
-    })
+    .catch(console.error)
 }
