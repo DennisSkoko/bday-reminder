@@ -1,27 +1,29 @@
 'use strict'
 
-const validate = (month, day) => {
-  if (month > 12) throw new Error('Invalid month, must be between: 1-12')
-  if (day > 31) throw new Error('Invalid day, must be between: 1-31')
-}
+const moment = require('moment')
 
-module.exports = () => ({
-  command: 'add <name> <month> <day>',
+module.exports = ({ logger, storage }) => ({
+  command: 'add <name> <date>',
   describe: 'Adds the birthday within the storage',
   builder: yargs => yargs
+    .example('add "Dennis Skoko" 1996-01-19')
     .positional('name', {
       describe: 'The name of the person',
       type: 'string'
     })
-    .positional('month', {
+    .positional('date', {
       describe: 'Which month of the birthday date',
-      type: 'number'
-    })
-    .positional('day', {
-      describe: 'Which day of the birthday date',
-      type: 'number'
+      type: 'string'
     }),
-  handler: ({ name, month, day }) => {
-    validate(month, day)
+  handler: ({ name, date }) => {
+    storage.add({ name, date: new Date(date) })
+      .then(() => {
+        logger.info('User has been added')
+      })
+      .catch(err => {
+        logger.error('Failed to add the person', {
+          error: err.message
+        })
+      })
   }
 })

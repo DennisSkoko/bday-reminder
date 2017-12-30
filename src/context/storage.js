@@ -13,5 +13,11 @@ module.exports = ({ settings, logger }) => ({
         }
       }),
 
-  get: () => fs.readJson(settings.storage.path)
+  get: () => fs.readJson(settings.storage.path),
+
+  add: person => fs.readJson(settings.storage.path)
+    .then(people => {
+      people.push(person)
+      return fs.writeJson(settings.storage.path, people, { spaces: 2 })
+    })
 })
