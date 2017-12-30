@@ -8,6 +8,7 @@ module.exports = ({ settings, storage, commands }) => () =>
       yargs
         .version(settings.version)
         .command(commands.add)
+        .command(commands.remove)
         .command(commands.run)
         .demandCommand()
         .parse()

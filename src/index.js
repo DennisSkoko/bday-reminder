@@ -14,6 +14,7 @@ const modules = [
     path: 'commands',
     modules: [
       { path: 'add' },
+      { path: 'remove' },
       { path: 'run' }
     ]
   },
