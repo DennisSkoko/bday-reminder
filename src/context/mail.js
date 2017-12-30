@@ -1,10 +1,9 @@
 'use strict'
 
-const fs = require('fs-extra')
 const template = require('lodash.template')
 const nodemailer = require('nodemailer')
 
-module.exports = ({ settings, markdown }) => {
+module.exports = ({ settings, fs, markdown }) => {
   const format = template(fs.readFileSync(settings.mailer.template, 'utf8'))
   const mailer = nodemailer.createTransport(settings.mailer)
 

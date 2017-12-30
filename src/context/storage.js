@@ -1,8 +1,6 @@
 'use strict'
 
-const fs = require('fs-extra')
-
-module.exports = ({ settings, logger }) => ({
+module.exports = ({ settings, logger, fs }) => ({
   init: () =>
     fs.ensureFile(settings.storage.path)
       .then(() => fs.readFile(settings.storage.path, settings.storage.encoding))
