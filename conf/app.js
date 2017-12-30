@@ -22,8 +22,8 @@ module.exports = () => ({
     colors: true
   },
 
-  reminder: {
-    cronTime: '* * * * * *', // '0 0 9 * * *',
+  job: {
+    cronTime: '* * * * * *', // '0 0 12 * * *',
     start: true
   }
 })

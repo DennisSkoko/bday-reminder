@@ -1,7 +1,5 @@
 'use strict'
 
-const moment = require('moment')
-
 module.exports = ({ logger, storage }) => ({
   command: 'add <name> <date>',
   describe: 'Adds the birthday within the storage',
