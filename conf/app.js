@@ -37,5 +37,5 @@ module.exports = () => ({
     to: {
       email: process.env.EMAIL_SENDTO || 'receiver@example.com'
     }
-  },
+  }
 })
