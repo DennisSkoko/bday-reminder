@@ -1,9 +1,11 @@
 'use strict'
 
-module.exports = ({ logger, storage, job }) => ({
+module.exports = ({ logger, storage, job, mail }) => ({
   command: 'run',
   describe: 'Starts a process that will send emails when birthdays are coming up',
   handler: argv => {
+    logger.info('Process started')
+
     job(() => {
       logger.verbose('Checking if there are any birthdays today')
 
@@ -16,7 +18,18 @@ module.exports = ({ logger, storage, job }) => ({
 
             if (person.date.getMonth() === today.getMonth() &&
               person.date.getDate() === today.getDate()) {
-              logger.info('It is ' + person.name + ' birthday today!')
+              mail({
+                name: person.name,
+                age: today.getYear() - person.date.getYear()
+              })
+                .then(() => {
+                  logger.verbose('Successfuly sent a mail about a birthday', {
+                    name: person.name
+                  })
+                })
+                .catch(err => {
+                  logger.error('Could not send mail', { message: err.message })
+                })
             }
           })
         })
