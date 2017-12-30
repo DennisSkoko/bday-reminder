@@ -16,7 +16,7 @@ module.exports = ({ logger, storage }) => ({
   handler: ({ name, date }) => {
     storage.add({ name, date: new Date(date) })
       .then(() => {
-        logger.info('User has been added')
+        logger.info('Person has been added')
       })
       .catch(err => {
         logger.error('Failed to add the person', {
