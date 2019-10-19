@@ -1,0 +1,44 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+
+Description: Resources for managing peoples birthdays and birthday notifications
+
+Resources:
+  BirthdayStorage:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: Name
+          AttributeType: S
+      KeySchema:
+        - AttributeName: Name
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+
+  BirthdayChecker:
+    Type: AWS::Serverless::Function
+    Properties:
+      Description: Checks every day if it is someones birthday
+      Handler: src/handlers/BirthdayChecker/index.handler
+      Runtime: nodejs10.x
+      CodeUri: '.'
+      Environment:
+        Variables:
+          TABLE_NAME_BIRTHDAY: !Ref BirthdayStorage
+          TOPIC_ARN_BIRTHDAY: !Ref BirthdayNotification
+      Events:
+        CronJob:
+          Type: Schedule
+          Properties:
+            Schedule: cron(00 07 * * ? *)
+            Enabled: true
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: !Ref BirthdayStorage
+        - SNSPublishMessagePolicy:
+            TopicName: !GetAtt BirthdayNotification.TopicName
+
+  BirthdayNotification:
+    Type: AWS::SNS::Topic
