@@ -6,6 +6,9 @@
   "plugins": [
     "prettier"
   ],
+  "env": {
+    "jest": true
+  },
   "rules": {
     "prettier/prettier": ["error", {
       "semi": false,

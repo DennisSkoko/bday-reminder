@@ -4,3 +4,6 @@ npm-debug.log*
 
 # aws
 cloudformation-packaged.yml
+
+# testing
+coverage
