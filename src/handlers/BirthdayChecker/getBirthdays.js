@@ -2,7 +2,7 @@
 
 const DynamoDB = require('aws-sdk/clients/dynamodb')
 
-const client = new DynamoDB.DocumentClient()
+const client = new DynamoDB.DocumentClient({ apiVersion: '2011-12-05' })
 
 function getCurrentDate() {
   const currentDate = new Date()
