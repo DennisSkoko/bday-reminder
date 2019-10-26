@@ -44,5 +44,19 @@ Resources:
         - SNSPublishMessagePolicy:
             TopicName: !GetAtt BirthdayNotification.TopicName
 
+  BirthdayAdder:
+    Type: AWS::Serverless::Function
+    Properties:
+      Description: Adds a new birthday entry in the storage
+      Handler: src/handlers/BirthdayAdder/index.handler
+      Runtime: nodejs10.x
+      CodeUri: '.'
+      Environment:
+        Variables:
+          TABLE_NAME_BIRTHDAY: !Ref BirthdayStorage
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref BirthdayStorage
+
   BirthdayNotification:
     Type: AWS::SNS::Topic
