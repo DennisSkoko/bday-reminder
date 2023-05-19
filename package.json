@@ -1,0 +1,6 @@
+{
+  "name": "@dennisskoko/bday-reminder",
+  "workspaces": [
+    "src/*"
+  ]
+}

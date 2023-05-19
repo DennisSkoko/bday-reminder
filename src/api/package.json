@@ -1,0 +1,22 @@
+{
+  "name": "@dennisskoko/bday-reminder-api",
+  "type": "module",
+  "scripts": {
+    "start": "node src"
+  },
+  "dependencies": {
+    "@graphql-tools/schema": "^10.0.0",
+    "dotenv": "^16.0.3",
+    "graphql": "^16.6.0",
+    "graphql-http": "^1.18.0",
+    "graphql-relay": "^0.10.0",
+    "koa": "^2.14.2",
+    "koa-mount": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.13.6",
+    "@types/koa-mount": "^4.0.2",
+    "@types/node": "^20.2.1",
+    "typescript": "^5.0.4"
+  }
+}
