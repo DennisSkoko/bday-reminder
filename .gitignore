@@ -1,9 +1,0 @@
-# npm
-node_modules
-npm-debug.log*
-
-# aws
-cloudformation-packaged.yml
-
-# testing
-coverage
