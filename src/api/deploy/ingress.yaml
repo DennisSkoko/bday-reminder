@@ -1,0 +1,16 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: api
+
+spec:
+  entryPoints:
+    - private
+  tls:
+    certResolver: main
+  routes:
+    - kind: Rule
+      match: Host(`birthday-api.home.dennisskoko.com`)
+      services:
+        - name: api
+          port: http

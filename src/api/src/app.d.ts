@@ -1,6 +1,13 @@
-namespace NodeJS {
+module NodeJS {
   interface ProcessEnv {
-    APP_HTTP_PORT?: string
-    APP_DATABASE_URI?: string
+    readonly BIRTHDAY_STORAGE_FILE?: string
   }
 }
+
+interface Person {
+  id: string
+  name: string
+  birth: string
+}
+
+type StoragePerson = { [id: string]: Person }
