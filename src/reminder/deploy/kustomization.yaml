@@ -1,0 +1,6 @@
+secretGenerator:
+  - name: env
+    env: .env
+
+resources:
+  - reminder.yaml
