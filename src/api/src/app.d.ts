@@ -7,7 +7,7 @@ module NodeJS {
 interface Person {
   id: string
   name: string
-  birth: string
+  birthday: string
 }
 
 type StoragePerson = { [id: string]: Person }
