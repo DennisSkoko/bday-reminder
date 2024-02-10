@@ -1,0 +1,17 @@
+:root {
+  --color-bg: #000;
+  --color-text: #fff;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-bg: #fff;
+    --color-text: #000;
+  }
+}
+
+html {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'Rubik', sans-serif;
+}
