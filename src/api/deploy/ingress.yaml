@@ -10,7 +10,7 @@ spec:
     certResolver: main
   routes:
     - kind: Rule
-      match: Host(`birthday-api.home.dennisskoko.com`)
+      match: Host(`api.birthday.home.dennisskoko.com`)
       services:
         - name: api
           port: http
