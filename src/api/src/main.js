@@ -41,15 +41,17 @@ app.get('/birthday/upcoming', async (_req, res) => {
   const people = await storage.list()
   const now = new Date()
 
-  const upcomingBirthdays = people.filter(person => {
-    let birthday = parse(person.birthday.slice(5), 'MM-dd', now)
+  const upcomingBirthdays = people
+    .filter(person => {
+      let birthday = parse(person.birthday.slice(5), 'MM-dd', now)
 
-    if (isBefore(birthday, now)) {
-      birthday = add(birthday, { years: 1 })
-    }
+      if (isBefore(birthday, now)) {
+        birthday = add(birthday, { years: 1 })
+      }
 
-    return isWithinInterval(birthday, { start, end })
-  })
+      return isWithinInterval(birthday, { start, end })
+    })
+    .sort((a, b) => a.birthday.slice(5).localeCompare(b.birthday.slice(5)))
 
   res.json(upcomingBirthdays)
 })

@@ -7,14 +7,14 @@ if (!process.env.BIRTHDAY_STORAGE_FILE) {
 const filePath = process.env.BIRTHDAY_STORAGE_FILE
 
 /**
- *
+ * @returns {Promise<{ [id: string]: Person }>}
  */
 export async function read() {
   try {
     return JSON.parse(await readFile(filePath, 'utf-8'))
   } catch (err) {
     if (/** @type {NodeJS.ErrnoException} */ (err).code === 'ENOENT') {
-      return []
+      return {}
     }
 
     throw err
