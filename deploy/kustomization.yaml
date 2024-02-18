@@ -3,4 +3,5 @@ namespace: birthday
 resources:
   - namespace.yaml
   - ../src/api/deploy
+  - ../src/app-web/deploy
   - ../src/reminder/deploy

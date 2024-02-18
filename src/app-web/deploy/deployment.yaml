@@ -1,0 +1,25 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: app-web
+
+spec:
+  selector:
+    matchLabels: &labels
+      app.kubernetes.io/name: app-web
+  template:
+    metadata:
+      labels: *labels
+    spec:
+      containers:
+        - name: app-web
+          image: registry.home.dennisskoko.com/birthday/app-web
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: ['ALL']
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            seccompProfile:
+              type: RuntimeDefault
