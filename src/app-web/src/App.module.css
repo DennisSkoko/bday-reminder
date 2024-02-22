@@ -1,4 +1,17 @@
 .container {
   max-width: 64em;
-  margin: 5em auto 0;
+  margin: 5em auto;
+  padding: 0 2.5em;
+}
+
+@media (width >= 69em) {
+  .container {
+    padding: 0;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 5em;
 }

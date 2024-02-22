@@ -1,0 +1,59 @@
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  align-items: center;
+}
+
+.input {
+  background-color: transparent;
+  color: var(--color-text);
+  border: none;
+  border-bottom: thin solid var(--color-text);
+  padding: 0 0 .5em;
+  outline: none;
+  transition: border-bottom-color .15s ease;
+}
+
+.input:focus {
+  border-bottom-color: cyan;
+}
+
+.input:invalid, .input.invalid {
+  border-bottom-color: red;
+}
+
+@media (width >= 764px) {
+  .form {
+    flex-direction: row;
+  }
+}
+
+.name {
+  flex: 3 1;
+}
+
+.date {
+  flex: 2 1;
+}
+
+.actions {
+  flex: 1 1;
+  display: flex;
+  justify-content: end;
+  gap: .5rem;
+}
+
+.button {
+  background-color: transparent;
+  color: var(--color-text);
+  border: thin solid var(--color-text);
+  cursor: pointer;
+  padding: .25em .5em;
+}
+
+.button.danger {
+  border-color: crimson;
+  color: crimson;
+}
