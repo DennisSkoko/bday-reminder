@@ -12,7 +12,9 @@ export function App() {
       <main className={classes.container}>
         <Suspense fallback={null}>
           <div className={classes.content}>
-            <BirthdayUpcoming />
+            <div className={classes.jumbotron}>
+              <BirthdayUpcoming />
+            </div>
             <PersonList />
           </div>
         </Suspense>
