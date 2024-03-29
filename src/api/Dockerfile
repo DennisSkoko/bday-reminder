@@ -1,14 +1,14 @@
-FROM node:18-alpine
+FROM rust:1.76-slim as builder
 
-WORKDIR /usr/src/app
-
-ENV NODE_ENV=production
-
-COPY package.json .
-RUN npm i
-
+WORKDIR /home/app/src
 COPY . .
 
-EXPOSE 5000
+RUN cargo build --release
 
-CMD [ "node", "src/main.js" ]
+
+FROM debian:12.5-slim
+
+WORKDIR /home/app
+COPY --from=builder /home/app/src/target/release/api .
+
+CMD ["./api"]
