@@ -1,12 +1,17 @@
-FROM node:18
+FROM rust:1-bookworm AS builder
 
-WORKDIR /usr/src/app
-
-ENV NODE_ENV=production
-
-COPY package.json .
-RUN npm i
-
+WORKDIR /home/app/src
 COPY . .
 
-CMD [ "node", "src/main.js" ]
+RUN cargo build --release
+
+
+FROM debian:bookworm-slim
+
+WORKDIR /home/app
+COPY --from=builder /home/app/src/target/release/reminder .
+
+# Needed by reqwest to verify the SSL when doing HTTPS requests
+RUN apt-get update && apt-get install -y libssl3 ca-certificates
+
+CMD ["./reminder"]

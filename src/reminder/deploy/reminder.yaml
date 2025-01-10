@@ -12,9 +12,8 @@ spec:
         spec:
           restartPolicy: OnFailure
           containers:
-            - name: scraper
+            - name: reminder
               image: registry.home.dennisskoko.com/birthday/reminder:latest
-              command: ['node', 'src/main.js']
               securityContext:
                 allowPrivilegeEscalation: false
                 capabilities:
